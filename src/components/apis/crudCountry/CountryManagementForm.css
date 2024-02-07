@@ -1,0 +1,88 @@
+.managment--country {
+    display: flex;
+    background-color: rgba(114, 188, 206, 0.356);
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  .country--code {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    width: 30%;
+    margin-bottom: 20px;
+    margin-right: 25px;
+  }
+  
+  .management-information {
+    display: flex;
+    flex-direction: column;
+    width: 48%; /* Ajuste el ancho según sea necesario */
+    margin-bottom: 20px;
+  }
+  
+  .management-information label {
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+  
+  .management-information input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  .btn-tow {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .btn-tow button {
+    padding: 10px 20px;
+    margin: 1.5em;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-tow .btn-consult {
+    background-color: #00745e;
+    color: white;
+  }
+  
+  .btn-tow .btn--clear {
+    background-color: #e74c3c;
+  }
+  
+  .btn-tow .btn--update {
+    background-color: #3498db;
+  }
+  
+  .btn-tow .btn--delete {
+    background-color: #f39c12;
+  }
+  
+  .btn-tow button:hover {
+    background-color: #403e3e;
+  }
+  
+  @media (max-width: 600px) {
+    .country--code,
+    .management-information {
+      width: 100%;
+    }
+  }
+  
