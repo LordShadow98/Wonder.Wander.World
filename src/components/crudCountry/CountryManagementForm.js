@@ -61,68 +61,34 @@ const CountryManagementForm = () => {
 
   return (
     <div className='managment--country'>
-      <div className="country--code">
-        <label>Código del país:</label>
-        <input
-          type="text"
-          name="countryCode"
-          value={inputData.countryCode}
-          onChange={handleInputChange}
-        />
-        <button className="btn-consult" onClick={handleQuery}>Consultar</button>
-      </div>
-
-      <div className="obtain-information">
-        <label>Código del país:</label>
-        <input
-          type="text"
-          name="countryCode"
-          value={countryData.countryCode}
-          onChange={handleInputChange}  // Puedes decidir si quieres que este input sea editable o no
-        />
-
-        <label>Nombre:</label>
-        <input
-          type="text"
-          name="countryName"
-          value={countryData.countryName}
-          onChange={handleInputChange}
-        />
-
-        <div className="obtain-information-tow">
-          <label>Lengua:</label>
-          <input
-            type="text"
-            name="language"
-            value={countryData.language}
-            onChange={handleInputChange}
-          />
-
-          <label>Continente:</label>
-          <input
-            type="text"
-            name="continent"
-            value={countryData.continent}
-            onChange={handleInputChange}
-          />
-
-          {/* Nuevos campos para la gestión */}
-          <label>Capital:</label>
-          <input
-            type="text"
-            name="capital"
-            value={countryData.capital}
-            onChange={handleInputChange}
-          />
-
-          <label>Moneda:</label>
-          <input
-            type="text"
-            name="currency"
-            value={countryData.currency}
-            onChange={handleInputChange}
-          />
+      <form action="" className="consul--country">
+        <div>
+          {/* Input para llamar pais por codigo*/}
+          <label>Código país </label>
+          <input type="text" name="countryCode" value={inputData.countryCode} onChange={handleInputChange} />
+          <button className="btn-consult" onClick={handleQuery}>Consultar</button>
         </div>
+      </form>
+
+      <div className="modification--info">
+
+        <label>Código país </label>
+        <input type="text" name="countryCode" value={countryData.countryCode} onChange={handleInputChange} />
+
+        <label>Nombre </label>
+        <input type="text" name="countryName" value={countryData.countryName} onChange={handleInputChange} />
+
+        <label>Lengua </label>
+        <input type="text" name="language" value={countryData.language} onChange={handleInputChange} />
+
+        <label>Continente </label>
+        <input type="text" name="continent" value={countryData.continent} onChange={handleInputChange} />
+
+        <label>Capital:</label>
+        <input type="text" name="capital" value={countryData.capital} onChange={handleInputChange} />
+
+        <label>Moneda:</label>
+        <input type="text" name="currency" value={countryData.currency} onChange={handleInputChange} />
       </div>
 
       <div className="btn-tow">
