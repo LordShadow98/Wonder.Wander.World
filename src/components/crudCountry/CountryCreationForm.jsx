@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './CountryCreationForm.css';
+import axios from 'axios';
+
 
 const CountryForm = () => {
   const [inputData, setInputData] = useState({
@@ -21,7 +23,7 @@ const CountryForm = () => {
     });
   };
 
-  
+
   const handleClear = () => {
     setInputData({
       countryCode: '',
@@ -35,18 +37,38 @@ const CountryForm = () => {
   };
 
   // Función para manejar el envío del formulario (se implementará más adelante)
-  const handleCreate = () => {
-    // Lógica para enviar los datos al servidor (MongoDB)
-    // Esta parte se implementará posteriormente cuando agregues la funcionalidad de crear países
-    console.log('Crear país:', countryData);
+  const handleCreate = async () => {
+    try {
+      const response = await fetch('URL_DE_TU_API/country', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(countryData),
+      });
+  
+      const result = await response.json();
+      console.log(result.message);
+  
+      // Puedes realizar acciones adicionales después de la creación si es necesario
+  
+    } catch (error) {
+      console.error('Error al crear el país:', error);
+    }
   };
-
+  
   // Función para manejar el evento de clic en el botón "Consultar" (se implementará más adelante)
-  const handleQuery = () => {
-    // Lógica para consultar datos del servidor (MongoDB)
-    // Esta parte se implementará posteriormente cuando agregues la funcionalidad de consultar países
-    console.log('Consultar países');
+  const handleQuery = async () => {
+    try {
+      console.log('Realizando solicitud GET a la API...');
+      const response = await axios.get(`URL_DE_TU_API/country/${inputData.countryCode}`);
+      console.log('Respuesta de la API:', response.data);
+      setCountryData(response.data.country);  // Asegúrate de ajustar la estructura de tu respuesta según tu API
+    } catch (error) {
+      console.error('Error al consultar el país:', error);
+    }
   };
+  
 
   return (
     <div className='creation--country'>

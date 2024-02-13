@@ -1,19 +1,20 @@
 import React from "react";
-import "./components/apCountryManagementForm/CountryManagementFormis/Style.css"
+import './App.css';
+import CountryForm from "./components/crudCountry/CountryCreationForm.jsx";
+import CountryManagementForm from './components/crudCountry/CountryManagementForm.jsx';
 import Countries from './components/apis/Countries.jsx';
-import CountryManagementForm from "./components/crudCountry/CountryManagementForm.js";
 
 
 
-function App() {
+
+export default function App() {
   return (
-    <div className="container">     
-        <Countries/>   
-  
-          
+    <div className="app--container">
+      <div className="app--container--two">
+        
+        {/* <CountryForm /> */}
+        <CountryManagementForm/>
+      </div>
     </div>
   );
 }
-
-export default App;
-
