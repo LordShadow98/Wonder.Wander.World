@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import NavBar from "./components/navbar/NavBar";
+import SideBar from "./components/SideBar/SideBar";
 import App from "./App";
 
 const Router = createBrowserRouter([
     {
         path: '/',
-        element: <NavBar/>,
+        element: <SideBar/>,
         children: [
             {
             index: true,
