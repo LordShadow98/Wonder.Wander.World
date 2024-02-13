@@ -1,10 +1,10 @@
 import React from "react";
 import {Link, Outlet} from "react-router-dom";
-import "./NavBar.css"
+import "./SideBar.css"
 
-const NavBar = () => {
+const SideBar = () => {
   return (
-    <div className="NavBar">
+    <div className="SideBar">
       <section className="Logo">
         <img src="URL" alt="Logo App" />
       </section>
@@ -26,4 +26,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default SideBar;
