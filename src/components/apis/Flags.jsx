@@ -29,12 +29,7 @@ function Countries() {
         {data.countries.map((country, index) => (
           <div className="col-md-3" key={index}>
             <div className="border">
-              <img src="" alt=""></img>
-              {/* {country.code} */}
-              <img
-                src={"https://flagsapi.com/" + country.code + "/flat/64.png"}
-                className="marginR"/>
-              {country.name}
+              
               <div>
                 {/* {country.languages.map((language, index) => (
                     <p key={index}>{language.name}</p>

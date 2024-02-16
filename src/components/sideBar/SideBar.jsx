@@ -1,16 +1,16 @@
 import React from "react";
-import {Link, Outlet} from "react-router-dom";
-import "./SideBar.css"
+import { Link } from "react-router-dom";
+import "./SideBar.css";
 
 const SideBar = () => {
   return (
-    <div className="SideBar">
+    <div className="SideBar debug">
       <section className="Logo">
         <img src="URL" alt="Logo App" />
       </section>
-      <nav>
+      <nav className="content-sideBar">
         <ul>
-          <li>
+          <li className="list">
             <Link to="/">Home</Link>
           </li>
           <li>
@@ -20,8 +20,7 @@ const SideBar = () => {
             <Link to="/gestionar">Gestionar pais</Link>
           </li>
         </ul>
-  </nav>
-  <Outlet/>
+      </nav>
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import SideBar from "./components/SideBar/SideBar";
 import App from "./App";
+import CountryForm from "../crudCountry/CountryCreationForm";
+import CountryManagementForm from "../crudCountry/CountryManagementForm";
 
 const Router = createBrowserRouter([
     {
@@ -13,11 +15,11 @@ const Router = createBrowserRouter([
         },
         {
             path: '/crear',
-            element: <h2>Crear</h2>
+            element: <CountryForm/>
         },
         {
             path: '/gestionar',
-            element: <h2>Gestionar</h2>
+            element: <CountryManagementForm/>
         }
         ]
     },
