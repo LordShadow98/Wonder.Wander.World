@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./SideBar.css";
 
 const SideBar = () => {
+
   return (
     <div className="SideBar debug">
       <section className="Logo">
@@ -11,12 +12,12 @@ const SideBar = () => {
       <nav className="content-sideBar">
         <ul>
           <li className="list">
-            <Link to="/">Home</Link>
+            <Link to="/Home">Home</Link>
           </li>
-          <li>
+          <li className="list">
             <Link to="/crear">Crear pais</Link>
           </li>
-          <li>
+          <li className="list">
             <Link to="/gestionar">Gestionar pais</Link>
           </li>
         </ul>

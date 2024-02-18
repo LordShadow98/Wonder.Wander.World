@@ -5,17 +5,16 @@ import CountryForm from "./components/crudCountry/CountryCreationForm.jsx";
 import CountryManagementForm from './components/crudCountry/CountryManagementForm.jsx';
 import Countries from './components/apis/Countries.jsx';
 import SideBar from "./components/sideBar/SideBar.jsx";
-import SerchBar from "./components/serchBar/SerchBar.jsx";
-import SerchBarPrueba from "./components/serchBar/Prueba.jsx";
 
 export default function App() {
   return (
     <Router>
-      {/* <SerchBar/> */}
+      
       {/* <SerchBarPrueba/> */}
       {/* <div className="app--container"> */}
-      <div className="container-app">
+      <main className="container-app">
         <SideBar />
+        
         {/* <div className="app--container--two"> */}
         <div className="routes">
           <Routes>
@@ -24,7 +23,7 @@ export default function App() {
             <Route path="/gestionar" element={<CountryManagementForm />} />
           </Routes>
         </div>
-      </div>
+      </main>
     </Router>
   );
 }

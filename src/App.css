@@ -42,9 +42,6 @@
 }
 
 body{
-  display: flex;
-  align-items: center;
-  height: 100vh;
   margin: 0;
   font-family: "Arial", sans-serif;
   background-color: #dad8d8;
@@ -53,4 +50,8 @@ body{
 
 .container-app{
   display: flex;
+}
+
+.routes {
+  width: 100%;
 }
