@@ -5,13 +5,13 @@ import "./SideBar.css";
 const SideBar = () => {
   return (
     <div className="SideBar debug">
-      <section className="Logo">
-        <img src="URL" alt="Logo App" />
-      </section>
-      <nav className="content-sideBar">
+      <div className="Logo">
+        {/* <img src="URL" alt="Logo App" /> */}
+      </div>
+      <nav>
         <ul>
-          <li className="list">
-            <Link to="/">Home</Link>
+          <li>
+            <Link to="/home">Home</Link>
           </li>
           <li>
             <Link to="/crear">Crear pais</Link>

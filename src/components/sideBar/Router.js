@@ -3,6 +3,7 @@ import SideBar from "./components/SideBar/SideBar";
 import App from "./App";
 import CountryForm from "../crudCountry/CountryCreationForm";
 import CountryManagementForm from "../crudCountry/CountryManagementForm";
+import Countries from "../urls/Countries";
 
 const Router = createBrowserRouter([
     {
@@ -11,7 +12,7 @@ const Router = createBrowserRouter([
         children: [
             {
             index: true,
-            element: <App/>        
+            element: <Countries/>        
         },
         {
             path: '/crear',

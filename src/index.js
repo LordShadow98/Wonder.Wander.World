@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from '../src/App'
 
-
 import { ApolloProvider,ApolloClient, InMemoryCache } from '@apollo/client'
+
 
 const client = new ApolloClient ({
   uri: "https://countries.trevorblades.com/",
@@ -11,6 +11,6 @@ const client = new ApolloClient ({
 })
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ApolloProvider client={client}>
-    <App />
+    <App />  
   </ApolloProvider>
 );

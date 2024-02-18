@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./SerchBar.css";
 
 const SerchBar = () => {
-  const list = ["Colombia","Canada","France","Germany","Argentina","Peru"];
+  const list = [];
   const [filterList, setFilterList] = useState(list);
 
   const handleSearch = (event) => {
