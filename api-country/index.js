@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
+require("dotenv").config();
 
 //Controladores
 const {saveCountry, viewCountry, editCountry, deleteCountry} = require("./controllers/Country.controller.js");
@@ -16,7 +17,7 @@ app.use(express.json())
 async function BDconnection() {
     try{
         //Conectando a la base de datos
-        await mongoose.connect('mongodb://localhost:27017/country');
+        await mongoose.connect(process.env.MONGODB_URL);
         
         console.log("Conectado a la base de datos");
     }catch (error){
