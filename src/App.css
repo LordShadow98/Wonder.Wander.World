@@ -42,9 +42,12 @@
 }
 
 body{
+<<<<<<< HEAD
   display: flex;
   align-items: auto;
   height: auto;
+=======
+>>>>>>> 81f30f4 ("Adding search bar with its respective styles and functionalities.")
   margin: 0;
   font-family: "Arial", sans-serif;
   background-color: #dad8d8;
@@ -53,4 +56,8 @@ body{
 
 .container-app{
   display: flex;
+}
+
+.routes {
+  width: 100%;
 }
