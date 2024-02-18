@@ -1,6 +1,7 @@
+import React from "react";
 import Swal from "sweetalert2";
 
-const showAlert = (position, type, title, text, timer) => {
+const mostrarInformacion = (position, type, title, text, timer) => {
   Swal.fire({
     position: position,
     icon: type,
@@ -10,4 +11,4 @@ const showAlert = (position, type, title, text, timer) => {
   });
 };
 
-export default showAlert;
+export default mostrarInformacion;
