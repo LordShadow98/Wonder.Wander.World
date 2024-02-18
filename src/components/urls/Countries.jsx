@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { gql, useQuery } from "@apollo/client";
 import "../urls/Countries.css";
+// import mostrarInformacion from "./Alert"; 
 
 
 const GET_ALL_COUNTRIES = gql`
@@ -91,3 +92,7 @@ function Countries() {
 }
 
 export default Countries;
+
+
+
+
