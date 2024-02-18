@@ -1,57 +1,21 @@
-/* .border {
-  border: 1px solid black;
-  border-radius: px;
-  margin: 15px -200px;
-  width: 200px;
-  box-shadow: rgb(9, 87, 233) 0px 0px 7px 0px;
-  border-bottom-left-radius: 9px;
-  border-bottom-right-radius: 9px; 
-  border-top-left-radius: 9px;
-  border-top-right-radius: 9px;  
-  line-height: 1; 
-}
-.col-md-4{
-  padding: 2px;
- 
-}
-
-
-.marginR {
-  margin-right: 8px;
-  
-}
-.container{  
+.SideBar {
   display: flex;
-  flex-direction:column;
-  margin-right: 10px;
+  flex-direction: column;
+  background-color: rgba(73, 68, 68, 0.938);
+  height: 100vh;
+  width: 40vh;
+  gap: 200px;
+}
+
+.content-sideBar{
+  display: flex;
+  justify-content: center;
   align-items: center;
-  
-}
-.continents ul{
-  display: flex;
-  padding: 0px;
-  list-style: none; 
+  color:antiquewhite
 }
 
-.continents li{
+.Logo {
   display: flex;
-  padding: 10px; 
-  border: 2px  solid #ebe7e7;
-  border-radius: 5px;
-  margin: 5px;
-  box-shadow: rgb(9, 87, 233) 0px 0px 7px 0px;  
-  margin: 6px; 
-  flex: 10px; 
-  max-width: 350px;
- 
+padding: 20px 20px;
+  justify-content: center;
 }
-.barra{  
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  border: 2px  solid #ebe7e7;  
-  margin: 5px;  
-  margin: 6px;   
-  max-width: 350px;
-  
-} */
