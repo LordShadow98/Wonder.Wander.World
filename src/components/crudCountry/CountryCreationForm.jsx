@@ -61,7 +61,7 @@ const CountryForm = () => {
   const handleQuery = async () => {
     try {
       console.log('Realizando solicitud GET a la API...');
-      const response = await axios.get(`URL_DE_TU_API/country/${inputData.countryCode}`);
+      const response = await axios.get(`URL_DE_TU_API/country/`);
       console.log('Respuesta de la API:', response.data);
       setCountryData(response.data.country);  // Asegúrate de ajustar la estructura de tu respuesta según tu API
     } catch (error) {
