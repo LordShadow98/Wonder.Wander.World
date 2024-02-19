@@ -77,11 +77,11 @@ background-color: rgb(255, 255, 255);
 
 }
 /* imagen bandera */
-.fiags-image{
+.flags-image{
   width: 25%;
   height: auto;
   aspect-ratio: 1;    
-  margin: 5px 15px;
+  margin: 0px 15px;
 }
 
 /* div de parrafos */
