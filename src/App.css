@@ -37,21 +37,16 @@
   }
 } */
 
-.debug {
-  border: 1px red solid;
-}
-
-body{
+body {
   display: flex;
   align-items: auto;
   height: auto;
   margin: 0;
   font-family: "Arial", sans-serif;
   background-color: #dad8d8;
-  border: 1px red solid;
 }
 
-.container-app{
+.container-app {
   display: flex;
 }
 
