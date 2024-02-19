@@ -12,7 +12,7 @@ const SideBar = () => {
   return (
     <div className="SideBar debug">
       <section className="Logo">
-        <img src={process.env.PUBLIC_URL + '/logo192.png'} alt="Logo App" />
+        <img src={process.env.PUBLIC_URL + '/logo232.png'} alt="Logo App" />
       </section>
       <nav className="content-sideBar">
         <ul className="nav-list">
