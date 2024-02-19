@@ -37,27 +37,16 @@
   }
 } */
 
-.debug {
-  border: 1px red solid;
-}
-
-body{
-<<<<<<< HEAD
-<<<<<<< HEAD
+body {
   display: flex;
   align-items: auto;
   height: auto;
-=======
->>>>>>> 81f30f4 ("Adding search bar with its respective styles and functionalities.")
-=======
->>>>>>> 81f30f497722056027d36e8961eca004a8b4f890
   margin: 0;
   font-family: "Arial", sans-serif;
   background-color: #dad8d8;
-  border: 1px red solid;
 }
 
-.container-app{
+.container-app {
   display: flex;
 }
 

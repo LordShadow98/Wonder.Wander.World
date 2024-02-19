@@ -1,34 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./SideBar.css";
 
 const SideBar = () => {
+  const [selectedButton, setSelectedButton] = useState(null);
+
+  const handleButtonClick = (button) => {
+    setSelectedButton(button);
+  };
 
   return (
     <div className="SideBar debug">
-      <div className="Logo">
-        {/* <img src="URL" alt="Logo App" /> */}
-      </div>
-      <nav>
-        <ul>
-<<<<<<< HEAD
-<<<<<<< HEAD
+      <section className="Logo">
+        <img src={process.env.PUBLIC_URL + '/logo192.png'} alt="Logo App" />
+      </section>
+      <nav className="content-sideBar">
+        <ul className="nav-list">
+          <li className="list">
+            <Link to="/">
+              <button
+                className={`link-button ${selectedButton === "home" ? "selected" : ""}`}
+                onClick={() => handleButtonClick("home")}
+              >
+                Home
+              </button>
+            </Link>
+          </li>
           <li>
-            <Link to="/home">Home</Link>
-=======
-          <li className="list">
-            <Link to="/Home">Home</Link>
->>>>>>> 81f30f4 ("Adding search bar with its respective styles and functionalities.")
-=======
-          <li className="list">
-            <Link to="/Home">Home</Link>
->>>>>>> 81f30f497722056027d36e8961eca004a8b4f890
+            <Link to="/crear">
+              <button
+                className={`link-button ${selectedButton === "crear" ? "selected" : ""}`}
+                onClick={() => handleButtonClick("crear")}
+              >
+                Crear pais
+              </button>
+            </Link>
           </li>
-          <li className="list">
-            <Link to="/crear">Crear pais</Link>
-          </li>
-          <li className="list">
-            <Link to="/gestionar">Gestionar pais</Link>
+          <li>
+            <Link to="/gestionar">
+              <button
+                className={`link-button ${selectedButton === "gestionar" ? "selected" : ""}`}
+                onClick={() => handleButtonClick("gestionar")}
+              >
+                Gestionar pais
+              </button>
+            </Link>
           </li>
         </ul>
       </nav>
