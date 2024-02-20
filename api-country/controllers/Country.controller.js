@@ -32,6 +32,18 @@ async function viewCountry(req, res) {
     }
 }
 
+async function viewOneCountry(req, res){
+    const {code} = req.params;
+    console.log('code', code)
+    try{
+        //const country = await CountryModel.find();
+        const country = await CountryModel.findOne({code: code});
+        res.json({"country": country})
+    }catch (error){
+        console.log("Error al consultar los países: ", error);
+    }
+}
+
 async function editCountry(req, res) {
     try{
         const {id} = req.params;
@@ -56,4 +68,4 @@ async function deleteCountry(req, res) {
     }
 }
 
-module.exports = {saveCountry, viewCountry, editCountry, deleteCountry};
+module.exports = {saveCountry, viewCountry, viewOneCountry, editCountry, deleteCountry};

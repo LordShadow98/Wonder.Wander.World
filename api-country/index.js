@@ -4,7 +4,7 @@ const morgan = require("morgan");
 require("dotenv").config();
 
 //Controladores
-const {saveCountry, viewCountry, editCountry, deleteCountry} = require("./controllers/Country.controller.js");
+const {saveCountry, viewCountry, viewOneCountry, editCountry, deleteCountry} = require("./controllers/Country.controller.js");
 
 
 const app = express();
@@ -32,7 +32,8 @@ BDconnection();
 
 app.post("/country", saveCountry);
 app.get("/country", viewCountry);
+app.get("/country/:code", viewOneCountry);
 app.put("/country/:id", editCountry);
 app.delete("/country/:id", deleteCountry);
 
-app.listen(port, () => console.log("Servidor ejecutándose"));
+app.listen(port, () => console.log(`Servidor ejecutándose en: http://localhost:${port}/country`));
