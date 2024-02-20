@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import './CountryManagementForm.css';
+import axios from 'axios';
 
 const CountryManagementForm = () => {
   const [inputData, setInputData] = useState({
-    countryCode: '',
+    code: '',
   });
 
   const [countryData, setCountryData] = useState({
-    countryCode: '',
-    countryName: '',
+    code: '',
+    name: '',
     language: '',
     continent: '',
     capital: '',
@@ -25,11 +26,11 @@ const CountryManagementForm = () => {
 
   const handleClear = () => {
     setInputData({
-      countryCode: '',
+      code: '',
     });
     setCountryData({
-      countryCode: '',
-      countryName: '',
+      code: '',
+      name: '',
       language: '',
       continent: '',
       capital: '',
@@ -43,52 +44,47 @@ const CountryManagementForm = () => {
     console.log('Actualizar país:', countryData);
   };
 
-  const handleQuery = () => {
-    // Lógica para consultar datos del servidor (MongoDB)
-    // Actualiza el estado de countryData con los datos obtenidos
-    // Implementa esta lógica según cómo obtienes los datos de la base de datos
-    const mockCountryData = {
-      countryCode: 'ES',
-      countryName: 'Spain',
-      language: 'Spanish',
-      continent: 'Europe',
-      capital: 'Madrid',
-      currency: 'Euro',
-    };
-
-    setCountryData(mockCountryData);
+  const handleQuery = async (e) => {
+    e.preventDefault(); // Evita el comportamiento por defecto del formulario (recargar la página)
+    try {
+      console.log('Realizando solicitud GET a la API...');
+      const response = await axios.get(`http://localhost:3002/country/${inputData.code}`);
+      console.log('Respuesta de la API:', response.data);
+      setCountryData(response.data.country); // Asegúrate de ajustar la estructura de tu respuesta según tu API
+    } catch (error) {
+      console.error('Error al consultar el país:', error);
+    }
   };
 
   return (
     <div className='managment--country'>
       <form action="" className="consul--country">
         <div>
-          {/* Input para llamar pais por codigo*/}
+          {/* Input para llamar país por código */}
           <label>Código país </label>
-          <input type="text" name="countryCode" value={inputData.countryCode} onChange={handleInputChange} />
+          <input type="text" name="code" value={inputData.code} onChange={handleInputChange} />
           <button className="btn-consult" onClick={handleQuery}>Consultar</button>
         </div>
       </form>
 
       <div className="modification--info">
-
         <label>Código país </label>
-        <input type="text" name="countryCode" value={countryData.countryCode} onChange={handleInputChange} />
+        <input type="text" name="code" value={countryData.code} readOnly />
 
         <label>Nombre </label>
-        <input type="text" name="countryName" value={countryData.countryName} onChange={handleInputChange} />
+        <input type="text" name="name" value={countryData.name} readOnly />
 
         <label>Lengua </label>
-        <input type="text" name="language" value={countryData.language} onChange={handleInputChange} />
+        <input type="text" name="language" value={countryData.language} readOnly />
 
         <label>Continente </label>
-        <input type="text" name="continent" value={countryData.continent} onChange={handleInputChange} />
+        <input type="text" name="continent" value={countryData.continent} readOnly />
 
         <label>Capital:</label>
-        <input type="text" name="capital" value={countryData.capital} onChange={handleInputChange} />
+        <input type="text" name="capital" value={countryData.capital} readOnly />
 
         <label>Moneda:</label>
-        <input type="text" name="currency" value={countryData.currency} onChange={handleInputChange} />
+        <input type="text" name="currency" value={countryData.currency} readOnly />
       </div>
 
       <div className="btn-tow">
