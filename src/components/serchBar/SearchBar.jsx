@@ -2,22 +2,9 @@ import React, { useState } from "react";
 import "./SearchBar.css";
 import ContinentItems from "./Continents";
 
-const SearchBar = () => {
-  const list = ["Colombia", "Canada", "France", "Germany", "Argentina", "Peru"];
-  const [filterList, setFilterList] = useState(list);
+const SearchBar = ({ handleSearch }) => {
   const [showContinents, setShowContinents] = useState(false);
-  const [Continentfilter, setContinentfilter] = useState("hhf");
-
-  const handleSearch = (event) => {
-    if (event.target.value === "") {
-      setFilterList(list);
-    }
-    const filteredList = list.filter(
-      (item) =>
-        item.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
-    );
-    setFilterList(filteredList);
-  };
+  const [Continentfilter, setContinentfilter] = useState("");
 
   const handleClick = (name) => {
     setContinentfilter(name);
@@ -85,8 +72,8 @@ const SearchBar = () => {
           </div>
         ) : null}
       </div>
-      {filterList &&
-        filterList.map((item, index) => <div key={index}>{item}</div>)}
+      {/* {filterList &&
+        filterList.map((item, index) => <div key={index}>{item}</div>)} */}
     </div>
   );
 };
