@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { gql, useQuery } from "@apollo/client";
 import "../urls/Countries.css";
-// import mostrarInformacion from "./Alert"; 
-
+import Swal from 'sweetalert2';
+// import Alert from "../alert/Alert";
 
 const GET_ALL_COUNTRIES = gql`
   query countries {
@@ -39,60 +39,59 @@ function Countries() {
     return data.results[0]?.urls?.regular;
   };
 
-  const obtenerImagenesPaises = async () => {
-    const images = {};
-    await Promise.all(
-      data.countries.map(async (country) => {
-        const imageUrl = await buscarImagen(country.name);
-        images[country.name] = imageUrl;
-      })
-    );
-    setCountryImages(images);
-  };
+   const obtenerImagenesPaises = async () => {
+     const images = {};
+     await Promise.all(
+       data.countries.map(async (country) => {
+         const imageUrl = await buscarImagen(country.name);
+         images[country.name] = imageUrl;
+       })
+     );
+     setCountryImages(images);
+   };
 
-  if (data && countryImages) {
-    obtenerImagenesPaises();
-  }
-  const mostrarInformacion = (country) => {
-    alert(
-      `País: ${country.name}\nBandera: https://flagsapi.com/${country.code}
-      /flat/64.png\nContinente:
-      ${country.continent.name}\nIdioma:
-       ${country.languages.name[0]?.name}\nMoneda:
-        ${country.currencies.join(",")}`
-    );
-  };
-  const mostrarInformacionDelPais = (country) => {
-    // Llama a la función mostrarInformacion del componente Alert cuando se hace clic en el div
-    mostrarInformacion('top-end', 'info', country.name, `Population: ${country.population}`, 3000);
-  };
+   if (data && countryImages) {
+     obtenerImagenesPaises();
+   }
+ 
+const mostrarInformacion = (country) => {
+  const languageName = country.languages.length > 0 ? country.languages[0].name : "N/A";
+  const message = `País:
+  ${country.name}\nBandera: https://flagsapi.com/
+  ${country.code}/flat/64.png\nContinente: 
+  ${country.continent.name}\nIdioma: 
+  ${languageName}\nMoneda: 
+  ${country.currencies.join(", ")}`;
   
-  return (
-    <div className="main__content">
-      <div className="main__content--grid">
-        {data.countries.map((country, index) => (       
-            <div className="card">
-              <div className="image">
-                <div className="image-onli">
-                  <img className="ima" src={countryImages[country.name]} alt={country.name} />
-                </div>
-              </div>
-              <div className="info" key={index} onClick={() => mostrarInformacion(country)}>
-                <img className="fiags-image" alt="" src={`https://flagsapi.com/${country.code}/flat/64.png`} />
-                <div className="country-details">
-                  <p className="p1">{country.name}</p>
-                  <p className="p2">{country.continent.name}</p>
-                </div>
-              </div>
-            </div>       
-        ))}
-      </div>
+  Swal("Información del país", message, "info");
+};
+
+return (
+  <div className="main__content">
+    <div className="main__content--grid">
+      {data.countries.map((country, index) => (
+        <div className="card">
+          <div className="image">
+            <div className="image-onli">
+              <img className="ima" src={countryImages[country.name]} alt={country.name} />
+            </div>
+          </div>
+          {/* <div className="info" onClick={(e) => { e.stopPropagation(); mostrarInformacion(country) }}> */}
+          <div className="info" onClick={() => mostrarInformacion(country)}>
+            <img className="flags-image" alt="" src={`https://flagsapi.com/${country.code}/flat/64.png`} />
+            <div className="country-details">
+              <p className="p1">{country.name}</p>
+              <p className="p2">{country.continent.name}</p>
+            </div>
+          </div>
+          {/* <Alert mostrarInformacion={mostrarInformacion} country={country} /> */}
+        </div>
+      ))}
     </div>
-  );
+  </div>
+);
 }
 
 export default Countries;
-
-
 
 
