@@ -1,12 +1,13 @@
 /* direccion de la grid */
 .main__content {
-  width: 80%;
+  /* width: 80%; */
   margin: 150px;
-  
-  /* margin-top: 1rem; */
   display: flex;
   justify-content: flex-start;
   align-items: center; 
+  /* margin-top: 1rem; */
+  flex-direction: column;
+  
 }
 /* la grid */
 .main__content .main__content--grid {

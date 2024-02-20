@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import { gql, useQuery } from "@apollo/client";
 import "../urls/Countries.css";
+<<<<<<< Updated upstream
 import Swal from 'sweetalert2';
 // import Alert from "../alert/Alert";
+=======
+import SearchBar from "../serchBar/SearchBar";
+// import mostrarInformacion from "./Alert";
+>>>>>>> Stashed changes
 
 const GET_ALL_COUNTRIES = gql`
   query countries {
@@ -12,10 +17,10 @@ const GET_ALL_COUNTRIES = gql`
       currencies
       continent {
         name
-      }      
+      }
       languages {
         name
-      }       
+      }
     }
     continents {
       name
@@ -50,6 +55,7 @@ function Countries() {
      setCountryImages(images);
    };
 
+<<<<<<< Updated upstream
    if (data && countryImages) {
      obtenerImagenesPaises();
    }
@@ -87,11 +93,72 @@ return (
           {/* <Alert mostrarInformacion={mostrarInformacion} country={country} /> */}
         </div>
       ))}
+=======
+  if (data && countryImages) {
+    obtenerImagenesPaises();
+  }
+  const mostrarInformacion = (country) => {
+    alert(
+      `País: ${country.name}\nBandera: https://flagsapi.com/${country.code}
+      /flat/64.png\nContinente:
+      ${country.continent.name}\nIdioma:
+       ${country.languages.name[0]?.name}\nMoneda:
+        ${country.currencies.join(",")}`
+    );
+  };
+  const mostrarInformacionDelPais = (country) => {
+    // Llama a la función mostrarInformacion del componente Alert cuando se hace clic en el div
+    mostrarInformacion(
+      "top-end",
+      "info",
+      country.name,
+      `Population: ${country.population}`,
+      3000
+    );
+  };
+
+  return (
+    <div className="main__content">
+      <SearchBar />
+      <div className="main__content--grid">
+        {data.countries.map((country, index) => (
+          <div className="card">
+            <div className="image">
+              <div className="image-onli">
+                <img
+                  className="ima"
+                  src={countryImages[country.name]}
+                  alt={country.name}
+                />
+              </div>
+            </div>
+            <div
+              className="info"
+              key={index}
+              onClick={() => mostrarInformacion(country)}
+            >
+              <img
+                className="fiags-image"
+                alt=""
+                src={`https://flagsapi.com/${country.code}/flat/64.png`}
+              />
+              <div className="country-details">
+                <p className="p1">{country.name}</p>
+                <p className="p2">{country.continent.name}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+>>>>>>> Stashed changes
     </div>
   </div>
 );
 }
 
 export default Countries;
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
