@@ -39,8 +39,9 @@ async function viewOneCountry(req, res){
         //const country = await CountryModel.find();
         const country = await CountryModel.findOne({code: code});
         res.json({"country": country})
+        console.log(country);
     }catch (error){
-        console.log("Error al consultar los países: ", error);
+        console.log("Error al consultar el país: ", error);
     }
 }
 
