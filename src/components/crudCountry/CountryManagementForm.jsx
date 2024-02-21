@@ -39,16 +39,24 @@ const CountryManagementForm = () => {
       currency: '',
     });
   };
-
+  
   const handleUpdate = async () => {
     try {
       console.log('Realizando solicitud PUT a la API...');
       const response = await axios.put(`http://localhost:3002/country/${countryData.code}`, countryData);
       console.log('Respuesta de la API:', response.data);
-
+      Swal.fire({
+        icon: 'success',
+        title: '¡Éxito!',
+        text: 'El país ha sido actualizado correctamente.',
+      });
     } catch (error) {
       console.error('Error al actualizar el país:', error);
-
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Hubo un error al actualizar el país. Por favor, inténtalo de nuevo más tarde.',
+      });
     }
   };
 

@@ -46,22 +46,24 @@ async function viewOneCountry(req, res){
 }
 
 async function editCountry(req, res) {
-    try{
-        const {id} = req.params;
+    try {
+        const { code } = req.params;
 
-        await CountryModel.findByIdAndUpdate(id, req.body);
+        // Buscar el país por el código en lugar de _id
+        await CountryModel.findOneAndUpdate({ code: code }, req.body);
 
-        res.json({message: "País editado correctamente"})
-    }catch (error){
+        res.json({ message: "País editado correctamente" });
+    } catch (error) {
         console.log("Error al editar país: " + error);
+        res.status(500).json({ error: "Error al editar país" });
     }
 }
 
 async function deleteCountry(req, res) {
     try{
-        const {id} = req.params;
+        const {code} = req.params;
 
-        await CountryModel.findByIdAndDelete(id);
+        await CountryModel.findByIdAndDelete(code);
 
         res.json({message: "País eliminado exitosamente"})
     }catch (error){
