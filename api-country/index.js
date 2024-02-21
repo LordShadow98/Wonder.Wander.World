@@ -35,7 +35,7 @@ BDconnection();
 app.post("/country", saveCountry);
 app.get("/country", viewCountry);
 app.get("/country/:code", viewOneCountry);
-app.put("/country/:id", editCountry);
-app.delete("/country/:id", deleteCountry);
+app.put("/country/:code", editCountry);
+app.delete("/country/:code", deleteCountry);
 
 app.listen(port, () => console.log(`Servidor ejecutándose en: http://localhost:${port}/country`));
