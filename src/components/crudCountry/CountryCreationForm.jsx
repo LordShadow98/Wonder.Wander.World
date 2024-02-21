@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./CountryCreationForm.css";
 import axios from "axios";
 
-
 const CountryForm = () => {
   const [inputData, setInputData] = useState({
     countryCode: "",
@@ -14,6 +13,8 @@ const CountryForm = () => {
     language: "",
     continent: "",
   });
+
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -35,19 +36,10 @@ const CountryForm = () => {
     });
   };
 
-  // Función para manejar el envío del formulario (se implementará más adelante)
   const handleCreate = async () => {
     try {
-      const response = await fetch("URL_DE_TU_API/country", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(countryData),
-      });
-
-      const result = await response.json();
-      console.log(result.message);
+      const response = await axios.post("", countryData);
+      console.log(response.data.message);
 
       // Puedes realizar acciones adicionales después de la creación si es necesario
     } catch (error) {
@@ -55,15 +47,46 @@ const CountryForm = () => {
     }
   };
 
-  // Función para manejar el evento de clic en el botón "Consultar" (se implementará más adelante)
   const handleQuery = async () => {
     try {
+      setLoading(true);
+  
       console.log("Realizando solicitud GET a la API...");
-      const response = await axios.get(`URL_DE_TU_API/country/`);
+      const response = await axios.post(
+        "https://countries.trevorblades.com/",
+        {
+          query: `
+            query GetCountryByCode($code: ID!) {
+              country(code: $code) {
+                code
+                name
+                languages {
+                  name
+                }
+                continent {
+                  name
+                }
+              }
+            }
+          `,
+          variables: {
+            code: inputData.countryCode,
+          },
+        }
+      );
+  
       console.log("Respuesta de la API:", response.data);
-      setCountryData(response.data.country); // Asegúrate de ajustar la estructura de tu respuesta según tu API
+  
+      setCountryData({
+        countryCode: response.data.data.country.code,
+        countryName: response.data.data.country.name,
+        language: response.data.data.country.languages[0]?.name || "",
+        continent: response.data.data.country.continent.name || "",
+      });
     } catch (error) {
       console.error("Error al consultar el país:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -79,7 +102,7 @@ const CountryForm = () => {
             value={inputData.countryCode}
             onChange={handleInputChange}
           />
-          <button className="btn-consult" onClick={handleQuery}>
+          <button className="btn-consult" onClick={handleQuery} disabled={loading}>
             Consultar
           </button>
         </div>
@@ -89,7 +112,7 @@ const CountryForm = () => {
         <label>Código </label>
         <input
           type="text"
-          name="countryCode"
+          name="outcountryCode"
           value={countryData.countryCode}
           onChange={handleInputChange}
         />
