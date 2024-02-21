@@ -1,4 +1,6 @@
 .SideBar {
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   background-color: #676767;
@@ -6,7 +8,6 @@
   width: 40vh;
   gap: 200px;
   padding: 20px;
-  border: 2px solid white;
   box-shadow: inset 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
@@ -27,14 +28,14 @@
   margin-top: 30px;
   margin-left: 47px;
   margin-right: 150em;
-  width: 100%; /* Ajusta el ancho al 100% del contenedor */
-  height: 100%; /* Ajusta la altura al 100% del contenedor */
+  width: 100%;
+  height: 100%;
 }
 
 .Logo img {
   width: 97%;
   height: 97%;
-  object-fit: contain; /* Mantiene la relación de aspecto y ajusta la imagen dentro del tamaño especificado */
+  object-fit: contain;
 }
 .nav-list {
   list-style: none;
@@ -65,5 +66,5 @@
   background-color: white;
   color: #333;
   border-color: #333;
-  box-shadow: inset 0px 5px 10px 0px rgba(252, 146, 146, 0.5);
+  box-shadow: inset 0px 5px 10px 0px rgba(77, 76, 76, 0.5);
 }

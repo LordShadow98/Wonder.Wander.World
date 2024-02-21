@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './CountryManagementForm.css';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
 
 const CountryManagementForm = () => {
   const [inputData, setInputData] = useState({
@@ -20,7 +22,7 @@ const CountryManagementForm = () => {
     const { name, value } = e.target;
     setInputData({
       ...inputData,
-      [name]: value,
+      [name]: value.toUpperCase(), // Convertir a mayúsculas
     });
   };
 
@@ -38,29 +40,52 @@ const CountryManagementForm = () => {
     });
   };
 
-  const handleUpdate = () => {
-    // Lógica para enviar los datos al servidor y actualizar el país
-    // Se implementará más adelante cuando agregues la funcionalidad de actualizar países
-    console.log('Actualizar país:', countryData);
+  const handleUpdate = async () => {
+    try {
+      console.log('Realizando solicitud PUT a la API...');
+      const response = await axios.put(`http://localhost:3002/country/${countryData.code}`, countryData);
+      console.log('Respuesta de la API:', response.data);
+
+    } catch (error) {
+      console.error('Error al actualizar el país:', error);
+
+    }
   };
 
   const handleQuery = async (e) => {
-    e.preventDefault(); // Evita el comportamiento por defecto del formulario (recargar la página)
+    e.preventDefault();
     try {
       console.log('Realizando solicitud GET a la API...');
       const response = await axios.get(`http://localhost:3002/country/${inputData.code}`);
-      console.log('Respuesta de la API:', response.data);
-      setCountryData(response.data.country); // Asegúrate de ajustar la estructura de tu respuesta según tu API
+
+      if (response.data.country) {
+        console.log('Respuesta de la API:', response.data);
+        setCountryData(response.data.country);
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'El país no se encuentra en la base de datos!',
+        });
+      }
     } catch (error) {
       console.error('Error al consultar el país:', error);
+      // Puedes mostrar otro SweetAlert aquí si hay un error en la solicitud.
     }
+  };
+
+  const handleFieldChange = (e) => {
+    const { name, value } = e.target;
+    setCountryData({
+      ...countryData,
+      [name]: value,
+    });
   };
 
   return (
     <div className='managment--country'>
       <form action="" className="consul--country">
         <div>
-          {/* Input para llamar país por código */}
           <label>Código país </label>
           <input type="text" name="code" value={inputData.code} onChange={handleInputChange} />
           <button className="btn-consult" onClick={handleQuery}>Consultar</button>
@@ -72,19 +97,19 @@ const CountryManagementForm = () => {
         <input type="text" name="code" value={countryData.code} readOnly />
 
         <label>Nombre </label>
-        <input type="text" name="name" value={countryData.name} readOnly />
+        <input type="text" name="name" value={countryData.name} onChange={handleFieldChange} />
 
         <label>Lengua </label>
-        <input type="text" name="language" value={countryData.language} readOnly />
+        <input type="text" name="language" value={countryData.language} onChange={handleFieldChange} />
 
         <label>Continente </label>
-        <input type="text" name="continent" value={countryData.continent} readOnly />
+        <input type="text" name="continent" value={countryData.continent} onChange={handleFieldChange} />
 
         <label>Capital:</label>
-        <input type="text" name="capital" value={countryData.capital} readOnly />
+        <input type="text" name="capital" value={countryData.capital} onChange={handleFieldChange} />
 
         <label>Moneda:</label>
-        <input type="text" name="currency" value={countryData.currency} readOnly />
+        <input type="text" name="currency" value={countryData.currency} onChange={handleFieldChange} />
       </div>
 
       <div className="btn-tow">
