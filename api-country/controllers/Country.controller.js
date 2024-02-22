@@ -60,14 +60,20 @@ async function editCountry(req, res) {
 }
 
 async function deleteCountry(req, res) {
-    try{
-        const {code} = req.params;
+    try {
+        const { code } = req.params;
 
-        await CountryModel.findByIdAndDelete(code);
+        // Buscar y eliminar el país por su código
+        const deletedCountry = await CountryModel.findOneAndDelete({ code: code });
 
-        res.json({message: "País eliminado exitosamente"})
-    }catch (error){
+        if (!deletedCountry) {
+            return res.status(404).json({ error: "No se encontró el país para eliminar" });
+        }
+
+        res.json({ message: "País eliminado exitosamente" });
+    } catch (error) {
         console.log("Error al eliminar país: " + error);
+        res.status(500).json({ error: "Error al eliminar país" });
     }
 }
 
