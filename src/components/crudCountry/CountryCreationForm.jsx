@@ -38,9 +38,18 @@ const CountryForm = () => {
 
   const handleCreate = async () => {
     try {
-      const response = await axios.post("", countryData);
+      const response = await axios.post("http://localhost:3002/country", {
+        code: countryData.countryCode,
+        name: countryData.countryName,
+        continent: countryData.continent,
+        capital: "", // Asegúrate de proporcionar este dato si es necesario
+        language: countryData.language,
+        currency: "", // Asegúrate de proporcionar este dato si es necesario
+        flag: "", // Asegúrate de proporcionar este dato si es necesario
+        photos: [] // Asegúrate de proporcionar este dato si es necesario
+      });
       console.log(response.data.message);
-
+  
       // Puedes realizar acciones adicionales después de la creación si es necesario
     } catch (error) {
       console.error("Error al crear el país:", error);
