@@ -137,9 +137,16 @@ function Countries() {
     const data = await response.json();
     return data.results[0]?.urls?.regular;
   };
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleChange = (event) => {
+    const term = event.target.value;
+    setSearchTerm(term);
+    handleSearch(term);
+  };
   return (
     <div className="main__content">
-       <SearchBar /> 
+       <SearchBar handleSearch={handleChange} /> 
       <div className="main__content--grid">
         {data.countries.map((country, index) => (
          <div className="card" onClick={() => mostrarInformacion(country)}>
