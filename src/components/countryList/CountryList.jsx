@@ -1,35 +1,15 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useQuery,gql } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 import SearchBar from "../serchBar/SearchBar";
 import "../countryList/CountryList.css";
 import Swal from "sweetalert2";
 
-
-const country = gql`
-   query countries {
-     countries {
-       code
-       name
-       capital
-       currencies
-       continent {
-         name
-       }languages {
-         name
-       }
-     }
-     continents {
-       name
-     }
-  }
- `;
-
-  const CountryList = () => {
-  const [ setSearchTerm] = useState(""); 
+const CountryList = () => {
+  const [searchTerm, setSearchTerm] = useState(""); 
   const [searchResults, setSearchResults] = useState([]); 
-  const [lista,setLista] = useState([]);
+  const [lista, setLista] = useState([]);
   const [countryImages, setCountryImages] = useState({});
 
   useEffect(() => {
@@ -38,7 +18,7 @@ const country = gql`
         const res = await axios.get("http://localhost:3002/country");
         setLista(res.data.country);
         setSearchResults(res.data.country);
-        // Obtener imágenes de Unsplash y actualizar el estado de countryImages
+        
         const images = {};
         for (const country of res.data.country) {
           const imageUrl = await buscarImagen(country.name);
@@ -53,8 +33,12 @@ const country = gql`
     obtenerPaises();
   }, []);      
      
-  const handleSearch = async (term) => {
-    setSearchTerm(term); 
+  const handleSearch = (event) => {
+    const term = event.target.value.toLowerCase();
+    const filteredList = lista.filter(country =>
+      country.name.toLowerCase().includes(term)
+    );
+    setSearchResults(filteredList);
   };
 
   const buscarImagen = async (countryName) => {
@@ -67,15 +51,14 @@ const country = gql`
   };
 
   const mostrarInformacion = (country) => {
-    const language =
-    country.language > 0 ? country.language[0].name : "N/A";
+    const language = country.language > 0 ? country.language[0].name : "N/A";
     const message = `
       País: ${country.name}
       Capital: ${country.capital}
       Continente: ${country.continent}
       Idioma: ${country.language}
       Moneda: ${country.currency}
-    `;   
+    `;
 
     const cardElement = `
     <div class="card-container"> 
@@ -107,16 +90,22 @@ const country = gql`
       showConfirmButton: false, 
       showCloseButton: true,      
     });
+  };
 
-};
+  const filtrarPorContinente = (continentName) => {
+    const filteredByContinent = lista.filter(country =>
+      country.continent === continentName
+    );
+    setSearchResults(filteredByContinent);
+  };
 
   return (
     <div className="main__content">    
-      <SearchBar onSearch={handleSearch} />
-      <div className="main__content--grid" >
-        {lista.map((country) => (
-           <div className="card" onClick={() => mostrarInformacion(country)}key={country}>
-            <div className="image">
+      <SearchBar handleSearch={handleSearch} filtrarPorContinente={filtrarPorContinente} />
+      <div className="main__content--grid">
+        {searchResults.map((country) => (
+          <div className="card" onClick={() => mostrarInformacion(country)} key={country}>
+            <div className="image" onClick={() => filtrarPorContinente(country.continent)}>
               <div className="image-onli">
                 <img className="ima" src={countryImages[country.name]} alt={country.name} />
               </div>
@@ -134,6 +123,5 @@ const country = gql`
     </div>
   );
 };
-
 
 export default CountryList;
