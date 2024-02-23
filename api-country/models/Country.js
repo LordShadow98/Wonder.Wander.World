@@ -18,7 +18,6 @@ const Country = new mongoose.Schema({
     },
     capital:{
         type: String,
-        required: true,
         trim: true
     },
     language:{
@@ -28,7 +27,6 @@ const Country = new mongoose.Schema({
     },
     currency:{
         type: String,
-        required: true,
         trim: true
     },
     flag:{

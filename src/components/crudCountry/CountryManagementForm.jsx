@@ -45,10 +45,18 @@ const CountryManagementForm = () => {
       console.log('Realizando solicitud PUT a la API...');
       const response = await axios.put(`http://localhost:3002/country/${countryData.code}`, countryData);
       console.log('Respuesta de la API:', response.data);
-
+      Swal.fire({
+        icon: 'success',
+        title: '¡Éxito!',
+        text: 'El país ha sido actualizado correctamente.',
+      });
     } catch (error) {
       console.error('Error al actualizar el país:', error);
-
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Hubo un error al actualizar el país. Por favor, inténtalo de nuevo más tarde.',
+      });
     }
   };
 
@@ -82,6 +90,28 @@ const CountryManagementForm = () => {
     });
   };
 
+  const handleDelete = async () => {
+    try {
+      console.log('Realizando solicitud DELETE a la API...');
+      const response = await axios.delete(`http://localhost:3002/country/${countryData.code}`);
+      console.log('Respuesta de la API:', response.data);
+      Swal.fire({
+        icon: 'success',
+        title: '¡Éxito!',
+        text: 'El país ha sido eliminado correctamente.',
+      });
+      // Limpia los datos después de eliminar
+      handleClear();
+    } catch (error) {
+      console.error('Error al eliminar el país:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Hubo un error al eliminar el país. Por favor, inténtalo de nuevo más tarde.',
+      });
+    }
+  };
+
   return (
     <div className='managment--country'>
       <form action="" className="consul--country">
@@ -113,7 +143,7 @@ const CountryManagementForm = () => {
       </div>
 
       <div className="btn-tow">
-        <button className="btn--delete" onClick={handleClear}>Eliminar</button>
+        <button className='btn--delete' onClick={handleDelete}>Eliminar</button>
         <button className='btn--update' onClick={handleUpdate}>Actualizar</button>
       </div>
     </div>
