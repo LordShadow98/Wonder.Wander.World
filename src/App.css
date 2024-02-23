@@ -47,9 +47,17 @@ body {
 }
 
 .container-app {
+  width: 100%;
   display: flex;
 }
 
 .routes {
   width: 100%;
 }
+
+@media screen and (max-width: 1024px) {
+  .container-app {
+    flex-direction: column;
+  }
+}
+
