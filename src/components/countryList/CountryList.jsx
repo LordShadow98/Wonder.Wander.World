@@ -4,11 +4,10 @@ import axios from "axios";
 import { useQuery,gql } from "@apollo/client";
 import SearchBar from "../serchBar/SearchBar";
 import "../countryList/CountryList.css";
-import "../urls/Countries";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 
-const  viewCountry= gql`
+const country = gql`
    query countries {
      countries {
        code
@@ -27,9 +26,7 @@ const  viewCountry= gql`
   }
  `;
 
-
   const CountryList = () => {
-  const { data } = useQuery(viewCountry);
   const [ setSearchTerm] = useState(""); 
   const [searchResults, setSearchResults] = useState([]); 
   const [lista,setLista] = useState([]);
@@ -69,12 +66,56 @@ const  viewCountry= gql`
     return data.results[0]?.urls?.regular;
   };
 
+  const mostrarInformacion = (country) => {
+    const language =
+    country.language > 0 ? country.language[0].name : "N/A";
+    const message = `
+      País: ${country.name}
+      Capital: ${country.capital}
+      Continente: ${country.continent}
+      Idioma: ${country.language}
+      Moneda: ${country.currency}
+    `;   
+
+    const cardElement = `
+    <div class="card-container"> 
+    <div class="card-img">
+    <img class ="card-ima" src=${countryImages[country.name]} alt={country.name} />  
+    </div>                  
+      <div class="card-body">
+          <img class="card-img-top" src="https://flagsapi.com/${country.code}/flat/64.png" alt="Flag">
+        <div class="card-info">
+          <h3>
+          <p class="card-div"><span class="country-word"></span> ${country.name}</p>              
+          <p class="card-text"> ${country.continent}</p> <h3>
+        </div>
+      </div>
+        <div class="card-text">
+        <p class="card-tx"><span class="capital-word">Capital:</span> ${country.capital}</p>
+        <p class="card-tx"><span class="idioma-word">Idioma:</span> ${country.language}</p>
+        <p class="card-tx"><span class="moneda-word">Moneda:</span> ${country.currency}</p>
+     </div> 
+    </div>    
+  `;
+
+    Swal.fire({      
+      html: cardElement,
+      text: message,
+      position: "bottom-end",      
+      width: '21rem',    
+      padding: '1rem',
+      showConfirmButton: false, 
+      showCloseButton: true,      
+    });
+
+};
+
   return (
     <div className="main__content">    
       <SearchBar onSearch={handleSearch} />
       <div className="main__content--grid" >
-        {lista.map((country, index) => (
-          <div className="card" >
+        {lista.map((country) => (
+           <div className="card" onClick={() => mostrarInformacion(country)}key={country}>
             <div className="image">
               <div className="image-onli">
                 <img className="ima" src={countryImages[country.name]} alt={country.name} />
