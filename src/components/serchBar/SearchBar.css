@@ -1,6 +1,7 @@
 .Search {
-  width: 100%;
-  padding-bottom: 100px; 
+  width: 30%;
+  padding-bottom: 30px;
+  margin-bottom: 20px; /* Puedes ajustar el valor según tus necesidades */
 }
 
 .inputContainer {

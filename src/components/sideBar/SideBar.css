@@ -1,4 +1,5 @@
 .SideBar {
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
@@ -6,7 +7,6 @@
   background-color: #676767;
   height: 100vh;
   width: 40vh;
-  gap: 200px;
   padding: 20px;
   box-shadow: inset 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
@@ -26,8 +26,6 @@
   max-width: 200px;
   max-height: 100px;
   margin-top: 30px;
-  margin-left: 47px;
-  margin-right: 150em;
   width: 100%;
   height: 100%;
 }
@@ -37,6 +35,9 @@
   height: 97%;
   object-fit: contain;
 }
+
+/* Resto de estilos no cambiados */
+
 .nav-list {
   list-style: none;
   padding: 0;
