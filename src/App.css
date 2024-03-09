@@ -1,22 +1,15 @@
 body {
-  margin: 0;
+  margin: auto;
+  border: none;
+  overflow-x: hidden;
   font-family: "Arial", sans-serif;
-  background-color: #e3f4ff;
   height: 100vh;
 }
 
-.container-app {
-  display: flex;
-  width: 100%;
-}
-
-.routes {
-  flex: 1; /* Esto hará que el div ocupe todo el espacio disponible */
-}
-
-.app--container--two {
+.app--container {
   flex: 1;
-  overflow-y: auto;
+  position: relative;
+  justify-content: center;
+  border: none;
+  background: #5f9d82;
 }
-
-/* Resto de estilos no cambiados */

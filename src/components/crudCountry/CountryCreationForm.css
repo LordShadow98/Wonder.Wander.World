@@ -1,27 +1,18 @@
-/* body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  font-family: "Arial", sans-serif;
-  background-color: #dad8d8;
-  border: 1px red solid;
-} */
-
 .creation--country {
-  /* Contenedor principal con diseño de columna */
   display: flex;
+  margin-left: 42vh;
+  margin-right: 30vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  width: 68%;
 }
 
 .form--country--code {
   /* Estilo para el formulario de código de país */
   display: flex;
-  margin-left: 100px;
+  margin-left: 250px;
   padding: 35px 10px 35px 0px;
   flex-direction: column;
   align-items: center;
@@ -58,7 +49,7 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, auto);
   grid-gap: 10px;
-  width: 110%; /* Ancho ajustado para un mejor espaciado */
+  width: 90%; /* Ancho ajustado para ocupar el contenedor padre */
   margin-bottom: 20px;
 }
 
@@ -82,7 +73,7 @@
   /* Contenedor para los botones de Limpiar y Crear */
   display: flex;
   justify-content: space-between;
-  width: 30%; /* Ancho ajustado para un mejor espaciado */
+  width: 100%; /* Ancho ajustado para ocupar el contenedor padre */
   margin-bottom: 20px;
 }
 
@@ -90,14 +81,18 @@
 .btn--create {
   /* Estilo para los botones Limpiar y Crear */
   padding: 10px 20px;
-  background-color: #d32323;
-  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
+.btn--clear {
+  background-color: #d32323;
+  color: white;
+}
+
 .btn--create {
   /* Estilo específico para el botón Crear */
   background-color: #008cba;
+  color: white;
 }

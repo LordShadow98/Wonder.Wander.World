@@ -1,5 +1,7 @@
 .Search {
-  width: 30%;
+  position: relative;
+  width: 35%;
+  margin-top: 1em;
   padding-bottom: 30px;
   margin-bottom: 20px; /* Puedes ajustar el valor según tus necesidades */
 }
@@ -34,7 +36,7 @@ label {
   position: absolute;
   top: 100%;
   background: white;
-  width: 70%;
+  width: 80vh;
   left: 0;
   margin-top: 1rem;
   border-radius: 25px;

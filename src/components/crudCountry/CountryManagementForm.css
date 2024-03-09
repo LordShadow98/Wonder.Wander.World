@@ -1,15 +1,16 @@
 .managment--country {
   display: flex;
+  margin-left: 50vh;
+  margin-right: 30vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  margin-left: 20vh;
 }
 
 .consul--country {
   display: flex;
-  margin-left: 100px;
+  margin-left: 245px;
   padding: 35px 10px 35px 0px;
   flex-direction: column;
   align-items: flex-end;
@@ -66,7 +67,6 @@
   width: 30%;
   margin-bottom: 20px;
 }
-
 
 .btn--update {
   padding: 10px 20px;

@@ -1,14 +1,24 @@
+/* Continents.css */
 
-.ContinentItems { cursor: pointer;}
-.ContinentImg{
-    height: 120px;
-    width: 200px;
-    border-radius: 10px;
-    object-fit: cover;
-    background-color: #ededed;
+.ContinentItems {
+  cursor: pointer;
+  display: inline-block;
+  width: 40%; /* Cada elemento ocupa el 33.33% del ancho del contenedor */
+  box-sizing: border-box;
+  padding: 10px; /* Agrega un espacio entre las imágenes */
+  text-align: center; /* Centra el contenido en el contenedor */
+  margin-bottom: 20px; /* Ajusta el espacio entre las filas */
 }
 
-p{
-margin: 0%;
-color:#6a6a6a
+.ContinentImg {
+  height: 120px;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  background-color: #ededed;
+}
+
+p {
+  margin: 0%;
+  color: #6a6a6a;
 }

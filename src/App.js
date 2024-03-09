@@ -11,17 +11,13 @@ import CountryList from "./components/countryList/CountryList.jsx";
 export default function App() {
   return (
     <Router>
-      <div className="container-app">
+      <div className="app--container">
         <SideBar />
-        <div className="app--container--two">
-          <div className="routes">
-            <Routes>
-              <Route path="/" element={<CountryList/>}/>
-              <Route path="/crear" element={<CountryForm />} />
-              <Route path="/gestionar" element={<CountryManagementForm />} />
-            </Routes>
-          </div>
-        </div>
+        <Routes>
+          <Route path="/" element={<CountryList />} />
+          <Route path="/crear" element={<CountryForm />} />
+          <Route path="/gestionar" element={<CountryManagementForm />} />
+        </Routes>
       </div>
     </Router>
   );

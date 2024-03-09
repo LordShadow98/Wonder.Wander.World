@@ -10,7 +10,7 @@ const SideBar = () => {
   };
 
   return (
-    <div className="SideBar debug">
+    <div className="SideBar">
       <section className="Logo">
         <img src={process.env.PUBLIC_URL + '/Logo@0.75x.png'} alt="Logo App" />
       </section>

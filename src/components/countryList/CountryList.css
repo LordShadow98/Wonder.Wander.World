@@ -1,8 +1,7 @@
 /* direccion de la grid */
 .main__content {
-  width: 100%;
-  margin-left: 100px;
-  margin-top: 1rem;
+  margin-left: 55vh; /* Ancho de la barra lateral */
+  margin-right: 10vh;
   display: flex;
   align-items: center;
   flex-direction: column;
